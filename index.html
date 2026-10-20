@@ -3,25 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anish Airsang</title>
+    <title>Anish Airsang | Systems & Platform Engineering</title>
+    <meta name="description" content="Anish Airsang - Computer Science Undergraduate at Alliance University focused on systems programming, Linux internals, and C++.">
     <style>
         :root {
             --bg: #ffffff;
-            --text: #1a1a1a;
-            --text-muted: #555555;
-            --border: #e5e5e5;
-            --link: #0969da;
-            --code-bg: #f6f8fa;
+            --surface: #f9fafb;
+            --surface-hover: #f3f4f6;
+            --text: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --border-hover: #d1d5db;
+            --link: #1d4ed8;
+            --tag-bg: #f3f4f6;
+            --tag-text: #374151;
+            --button-bg: #111827;
+            --button-text: #ffffff;
+            --button-hover: #1f2937;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #121316;
-                --text: #e6edf3;
-                --text-muted: #8b949e;
-                --border: #30363d;
-                --link: #58a6ff;
-                --code-bg: #1f242c;
+                --bg: #0f1117;
+                --surface: #161822;
+                --surface-hover: #1c1f2e;
+                --text: #f3f4f6;
+                --text-secondary: #9ca3af;
+                --text-muted: #6b7280;
+                --border: #232738;
+                --border-hover: #374151;
+                --link: #60a5fa;
+                --tag-bg: #1f2333;
+                --tag-text: #cbd5e1;
+                --button-bg: #f3f4f6;
+                --button-text: #0f1117;
+                --button-hover: #e5e7eb;
             }
         }
 
@@ -32,107 +49,99 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.65;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
             color: var(--text);
             background-color: var(--bg);
-            padding: 48px 20px;
+            padding: 56px 20px 80px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
         }
 
+        /* Header */
         header {
-            margin-bottom: 36px;
+            margin-bottom: 40px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 8px;
         }
 
         h1 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 6px;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text);
         }
 
         .subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 14px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
 
-        .nav-links {
+        .bio-lead {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .actions-row {
             display: flex;
-            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        /* Buttons & Links */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 8px 16px;
+            border-radius: 6px;
             font-size: 0.9rem;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid var(--border);
-            margin: 32px 0;
-        }
-
-        h2 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 14px;
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            font-size: 0.95rem;
-            margin-bottom: 14px;
-            color: var(--text);
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        li {
-            font-size: 0.95rem;
-            margin-bottom: 18px;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 4px;
-        }
-
-        .item-title {
-            font-weight: 600;
-        }
-
-        .item-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .item-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 10px 16px;
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-
-        .skill-category {
             font-weight: 500;
-            color: var(--text-muted);
+            text-decoration: none;
+            transition: background-color 0.15s ease;
         }
 
-        .skill-list {
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
             color: var(--text);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            background: transparent;
+            transition: all 0.15s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-hover);
+            background-color: var(--surface);
+            text-decoration: none;
         }
 
         a {
@@ -144,109 +153,352 @@
             text-decoration: underline;
         }
 
+        /* Sections */
+        section {
+            margin-top: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text);
+        }
+
+        /* Project Cards */
+        .project-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: border-color 0.15s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .project-title a {
+            color: var(--text);
+        }
+
+        .project-title a:hover {
+            color: var(--link);
+        }
+
+        .project-status {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+
+        .project-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 14px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+        }
+
+        /* Experience / Education items */
+        .info-block {
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .info-title {
+            font-weight: 600;
+            font-size: 0.98rem;
+        }
+
+        .info-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .info-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .info-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Skills Table */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .skills-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skills-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .skills-table td {
+            padding: 10px 0;
+            vertical-align: top;
+        }
+
+        .skill-name {
+            width: 140px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .skill-items {
+            color: var(--text);
+        }
+
         code {
-            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-            font-size: 0.85em;
-            background-color: var(--code-bg);
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.86em;
+            background-color: var(--tag-bg);
             padding: 2px 5px;
             border-radius: 4px;
         }
 
+        /* Footer */
         footer {
-            margin-top: 48px;
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            display: inline-block;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        
+        <!-- Header -->
         <header>
-            <h1>Anish Airsang</h1>
-            <div class="subtitle">Computer Science Undergraduate &bull; Bengaluru, India</div>
-            <div class="nav-links">
-                <a href="mailto:airsanganish@gmail.com">airsanganish@gmail.com</a>
-                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <div class="header-top">
+                <div>
+                    <h1>Anish Airsang</h1>
+                    <div class="subtitle">Computer Science Undergraduate &bull; Bengaluru, India</div>
+                </div>
+            </div>
+
+            <p class="bio-lead">
+                I am an undergraduate studying Computer Science & Engineering at Alliance University. My technical focus is on low-level systems programming in Modern C++, Linux kernel interfaces, and cloud platform infrastructure.
+            </p>
+
+            <div class="actions-row">
+                <a href="resume.pdf" target="_blank" class="btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    Download Resume (PDF)
+                </a>
+                <a href="https://linkedin.com/in/anishairsang" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.32a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="mailto:airsanganish@gmail.com" class="btn-secondary">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Email
+                </a>
             </div>
         </header>
 
+        <!-- Projects -->
         <section>
-            <h2>About</h2>
-            <p>
-                I am an undergraduate student studying Computer Science and Engineering at Alliance University. My interests are focused on systems programming, operating system primitives, and developer tooling. Most of my work involves writing modern C++ and interacting with Linux kernel interfaces.
-            </p>
-        </section>
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer" style="font-size: 0.88rem;">View all on GitHub &rarr;</a>
+            </div>
 
-        <hr>
+            <!-- host-inspector -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title"><a href="https://github.com/AnishAirsang/host-inspector" target="_blank" rel="noopener noreferrer">host-inspector</a></span>
+                    <span class="project-status">v2.2 &bull; Active</span>
+                </div>
+                <p class="project-desc">
+                    A modular C++ command-line tool for Linux host diagnostics. Extracts 1m/5m/15m system load from <code>/proc/loadavg</code>, samples <code>/proc/stat</code> clock ticks across a 200ms delta to calculate instantaneous CPU utilization percentage, and parses memory metrics from <code>/proc/meminfo</code>. Built with strict CMake warning targets and RAII stream handling.
+                </p>
+                <div class="tag-list">
+                    <span class="tag">C++17</span>
+                    <span class="tag">Linux procfs</span>
+                    <span class="tag">CMake</span>
+                    <span class="tag">POSIX</span>
+                </div>
+            </div>
 
-        <section>
-            <h2>Projects</h2>
-            <ul>
-                <li>
-                    <div class="item-header">
-                        <span class="item-title"><a href="https://github.com/AnishAirsang/host-inspector" target="_blank" rel="noopener noreferrer">host-inspector</a></span>
-                        <span class="item-meta">C++17 &bull; Linux</span>
-                    </div>
-                    <div class="item-desc">
-                        A lightweight command-line utility for Linux host inspection. Reads kernel counters from <code>/proc/loadavg</code> to retrieve system load averages and samples <code>/proc/stat</code> across a 200ms time interval to calculate real-time CPU utilization percentage. Also extracts memory usage metrics from <code>/proc/meminfo</code>. Built with CMake and structured into modular collector classes.
-                    </div>
-                </li>
-                <li>
-                    <div class="item-header">
-                        <span class="item-title"><a href="https://github.com/AnishAirsang/dayfinder" target="_blank" rel="noopener noreferrer">dayfinder</a></span>
-                        <span class="item-meta">C++</span>
-                    </div>
-                    <div class="item-desc">
-                        A C++ utility that calculates the exact day of the week for any Gregorian calendar date using calendar arithmetic.
-                    </div>
-                </li>
-                <li>
-                    <div class="item-header">
-                        <span class="item-title">NodeWatch</span>
-                        <span class="item-meta">In Progress</span>
-                    </div>
-                    <div class="item-desc">
-                        A planned Linux telemetry daemon written in C++ that continuously collects system resource metrics and exposes them over HTTP in the Prometheus text format.
-                    </div>
-                </li>
-            </ul>
-        </section>
+            <!-- NodeWatch -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title">NodeWatch</span>
+                    <span class="project-status">In Development</span>
+                </div>
+                <p class="project-desc">
+                    A standalone Linux telemetry monitoring daemon written in C++. Designed to continuously collect kernel resource counters and expose machine health metrics over an embedded HTTP endpoint formatted for Prometheus scraper ingestion.
+                </p>
+                <div class="tag-list">
+                    <span class="tag">C++17</span>
+                    <span class="tag">Prometheus Format</span>
+                    <span class="tag">Linux Daemon</span>
+                    <span class="tag">systemd</span>
+                </div>
+            </div>
 
-        <hr>
-
-        <section>
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">Languages</div>
-                <div class="skill-list">C++ (C++17), Python, Bash</div>
-
-                <div class="skill-category">Systems</div>
-                <div class="skill-list">Linux (Ubuntu), <code>procfs</code>, POSIX APIs, systemd</div>
-
-                <div class="skill-category">Tools</div>
-                <div class="skill-list">CMake, GCC/G++, Git, GDB, Valgrind</div>
+            <!-- dayfinder -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-title"><a href="https://github.com/AnishAirsang/dayfinder" target="_blank" rel="noopener noreferrer">dayfinder</a></span>
+                    <span class="project-status">Completed</span>
+                </div>
+                <p class="project-desc">
+                    A lightweight C++ program calculating the precise weekday for any given Gregorian calendar date using modular arithmetic.
+                </p>
+                <div class="tag-list">
+                    <span class="tag">C++</span>
+                    <span class="tag">Algorithms</span>
+                </div>
             </div>
         </section>
 
-        <hr>
-
+        <!-- Technical Skills -->
         <section>
-            <h2>Education</h2>
-            <div class="item-header">
-                <span class="item-title">Alliance University</span>
-                <span class="item-meta">2026 &mdash; 2030</span>
+            <div class="section-header">
+                <h2>Technical Proficiencies</h2>
             </div>
-            <div class="item-desc">
-                Bachelor of Technology in Computer Science and Engineering &bull; Bengaluru
+            <table class="skills-table">
+                <tr>
+                    <td class="skill-name">Languages</td>
+                    <td class="skill-items">C++ (C++17), Python, Bash, Go (fundamentals)</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Systems & OS</td>
+                    <td class="skill-items">Linux (Ubuntu/Debian), <code>procfs</code> virtual filesystem, POSIX system calls, memory management</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Developer Tools</td>
+                    <td class="skill-items">CMake, GCC/Clang, Git, GitHub Actions, GDB, Valgrind</td>
+                </tr>
+                <tr>
+                    <td class="skill-name">Infrastructure</td>
+                    <td class="skill-items">Prometheus exposition format, systemd daemon management, OCI containers</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+            <div class="info-block">
+                <div class="info-row">
+                    <span class="info-title">Alliance University</span>
+                    <span class="info-date">2026 &mdash; 2030</span>
+                </div>
+                <div class="info-subtitle">Bachelor of Technology (B.Tech) in Computer Science and Engineering</div>
+                <div class="info-details">
+                    Location: Bengaluru, Karnataka &bull; Core focus on systems programming, operating system primitives, and data structures.
+                </div>
             </div>
         </section>
 
-        <hr>
+        <!-- Publications & Writing -->
+        <section>
+            <div class="section-header">
+                <h2>Writing & Publications</h2>
+            </div>
+            <div class="info-block">
+                <div class="info-row">
+                    <span class="info-title">Published Author &mdash; 3 Fantasy Novels</span>
+                    <span class="info-date">2021 &mdash; Present</span>
+                </div>
+                <div class="info-details">
+                    Authored and independently published three fantasy novels (including <em>Mythical Lands</em> and <em>World of Griffins</em>) with 75+ copies distributed. Developed disciplined long-form technical writing and editing habits.
+                </div>
+            </div>
+        </section>
 
+        <!-- Footer -->
         <footer>
-            <p>Feel free to reach out via <a href="mailto:airsanganish@gmail.com">email</a> if you'd like to talk about systems programming or potential projects.</p>
+            <span>&copy; 2026 Anish Airsang</span>
+            <div class="footer-links">
+                <a href="mailto:airsanganish@gmail.com">airsanganish@gmail.com</a>
+                <a href="https://linkedin.com/in/anishairsang" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
         </footer>
+
     </div>
 </body>
 </html>
