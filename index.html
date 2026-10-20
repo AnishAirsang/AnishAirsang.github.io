@@ -1,363 +1,252 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anish Airsang | Systems & Platform Engineering</title>
-    <meta name="description" content="Portfolio of Anish Airsang - Systems Programming, Linux Internals, and Platform Engineering.">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#ecfdf5',
-                            500: '#10b981',
-                            600: '#059669',
-                        }
-                    }
-                }
+    <title>Anish Airsang</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #555555;
+            --border: #e5e5e5;
+            --link: #0969da;
+            --code-bg: #f6f8fa;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121316;
+                --text: #e6edf3;
+                --text-muted: #8b949e;
+                --border: #30363d;
+                --link: #58a6ff;
+                --code-bg: #1f242c;
             }
         }
-    </script>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #090a0f;
-            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            color: var(--text);
+            background-color: var(--bg);
+            padding: 48px 20px;
         }
-        .grid-bg {
-            background-size: 32px 32px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
         }
-        .glow {
-            box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.15);
+
+        header {
+            margin-bottom: 36px;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 32px 0;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-weight: 600;
+        }
+
+        .item-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 10px 16px;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .skill-category {
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .skill-list {
+            color: var(--text);
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+            font-size: 0.85em;
+            background-color: var(--code-bg);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 48px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-emerald-500 selection:text-black">
-
-    <!-- Grid Background -->
-    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
-
-    <!-- Navigation -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090a0f]/80 border-b border-zinc-800/80">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="font-mono text-sm tracking-wider font-semibold text-zinc-100 hover:text-emerald-400 transition-colors">
-                anish.airsang<span class="text-emerald-500 font-bold">_</span>
-            </a>
-            <nav class="flex items-center space-x-6 text-sm text-zinc-400 font-mono">
-                <a href="#about" class="hover:text-zinc-100 transition-colors">01.about</a>
-                <a href="#projects" class="hover:text-zinc-100 transition-colors">02.projects</a>
-                <a href="#terminal" class="hover:text-zinc-100 transition-colors">03.console</a>
-                <a href="#contact" class="hover:text-zinc-100 transition-colors">04.contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="relative z-10 max-w-5xl mx-auto px-6 py-16 space-y-28">
-
-        <!-- Hero Section -->
-        <section class="space-y-6 pt-8">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs font-mono">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Undergraduate &bull; B.Tech Computer Science &bull; Bengaluru, India
+<body>
+    <div class="container">
+        <header>
+            <h1>Anish Airsang</h1>
+            <div class="subtitle">Computer Science Undergraduate &bull; Bengaluru, India</div>
+            <div class="nav-links">
+                <a href="mailto:airsanganish@gmail.com">airsanganish@gmail.com</a>
+                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
+        </header>
 
-            <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-zinc-100 leading-tight">
-                Architecting Low-Level Systems & Telemetry Engines.
-            </h1>
-
-            <p class="text-lg text-zinc-400 max-w-2xl leading-relaxed">
-                Computer science student focusing on Linux kernel interfaces, user-space diagnostic agents, Modern C++ (C++17), and building cloud-native platform observability infrastructure.
+        <section>
+            <h2>About</h2>
+            <p>
+                I am an undergraduate student studying Computer Science and Engineering at Alliance University. My interests are focused on systems programming, operating system primitives, and developer tooling. Most of my work involves writing modern C++ and interacting with Linux kernel interfaces.
             </p>
+        </section>
 
-            <div class="flex flex-wrap gap-4 pt-4 font-mono text-sm">
-                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer" 
-                   class="px-5 py-2.5 rounded-md bg-zinc-100 text-zinc-950 font-semibold hover:bg-zinc-200 transition-colors inline-flex items-center gap-2">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    GitHub Profile
-                </a>
-                <a href="#projects" 
-                   class="px-5 py-2.5 rounded-md border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white transition-colors">
-                    Explore Repositories
-                </a>
+        <hr>
+
+        <section>
+            <h2>Projects</h2>
+            <ul>
+                <li>
+                    <div class="item-header">
+                        <span class="item-title"><a href="https://github.com/AnishAirsang/host-inspector" target="_blank" rel="noopener noreferrer">host-inspector</a></span>
+                        <span class="item-meta">C++17 &bull; Linux</span>
+                    </div>
+                    <div class="item-desc">
+                        A lightweight command-line utility for Linux host inspection. Reads kernel counters from <code>/proc/loadavg</code> to retrieve system load averages and samples <code>/proc/stat</code> across a 200ms time interval to calculate real-time CPU utilization percentage. Also extracts memory usage metrics from <code>/proc/meminfo</code>. Built with CMake and structured into modular collector classes.
+                    </div>
+                </li>
+                <li>
+                    <div class="item-header">
+                        <span class="item-title"><a href="https://github.com/AnishAirsang/dayfinder" target="_blank" rel="noopener noreferrer">dayfinder</a></span>
+                        <span class="item-meta">C++</span>
+                    </div>
+                    <div class="item-desc">
+                        A C++ utility that calculates the exact day of the week for any Gregorian calendar date using calendar arithmetic.
+                    </div>
+                </li>
+                <li>
+                    <div class="item-header">
+                        <span class="item-title">NodeWatch</span>
+                        <span class="item-meta">In Progress</span>
+                    </div>
+                    <div class="item-desc">
+                        A planned Linux telemetry daemon written in C++ that continuously collects system resource metrics and exposes them over HTTP in the Prometheus text format.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">Languages</div>
+                <div class="skill-list">C++ (C++17), Python, Bash</div>
+
+                <div class="skill-category">Systems</div>
+                <div class="skill-list">Linux (Ubuntu), <code>procfs</code>, POSIX APIs, systemd</div>
+
+                <div class="skill-category">Tools</div>
+                <div class="skill-list">CMake, GCC/G++, Git, GDB, Valgrind</div>
             </div>
         </section>
 
-        <!-- About & Core Stack -->
-        <section id="about" class="space-y-8">
-            <div class="flex items-center gap-3">
-                <span class="font-mono text-emerald-500 text-sm">01.</span>
-                <h2 class="text-2xl font-bold tracking-tight text-zinc-100">Engineering Focus</h2>
-                <div class="h-px bg-zinc-800 flex-1 ml-4"></div>
-            </div>
+        <hr>
 
-            <div class="grid md:grid-cols-2 gap-8 text-zinc-400 text-sm leading-relaxed">
-                <div class="space-y-4">
-                    <p>
-                        I focus on building low-level system tooling with a strict emphasis on deterministic resource utilization, memory safety, and high-signal observability.
-                    </p>
-                    <p>
-                        Rather than relying on opaque third-party black boxes, my work focuses on direct interaction with the Linux kernel via <code class="text-zinc-200 font-mono bg-zinc-900 px-1.5 py-0.5 rounded">procfs</code>, POSIX system calls, and zero-dependency modern C++ architectures.
-                    </p>
-                </div>
-                <div class="border border-zinc-800 rounded-lg p-5 bg-zinc-950/40 space-y-4 font-mono text-xs">
-                    <div class="text-zinc-200 font-semibold border-b border-zinc-800 pb-2">Technical Competency Index</div>
-                    <div class="space-y-2">
-                        <div class="flex justify-between"><span class="text-zinc-500">Systems Core:</span> <span class="text-emerald-400">Modern C++ (C++17/20), Linux, POSIX</span></div>
-                        <div class="flex justify-between"><span class="text-zinc-500">Kernel Interfaces:</span> <span class="text-zinc-300">/proc/stat, /proc/meminfo, /proc/loadavg</span></div>
-                        <div class="flex justify-between"><span class="text-zinc-500">Build & Toolchain:</span> <span class="text-zinc-300">CMake, GCC/G++, GDB, Valgrind</span></div>
-                        <div class="flex justify-between"><span class="text-zinc-500">Version Control:</span> <span class="text-zinc-300">Git (Conventional Commits), GitHub Actions</span></div>
-                        <div class="flex justify-between"><span class="text-zinc-500">Observability Target:</span> <span class="text-zinc-300">Prometheus Exposition, System Daemons</span></div>
-                    </div>
-                </div>
+        <section>
+            <h2>Education</h2>
+            <div class="item-header">
+                <span class="item-title">Alliance University</span>
+                <span class="item-meta">2026 &mdash; 2030</span>
+            </div>
+            <div class="item-desc">
+                Bachelor of Technology in Computer Science and Engineering &bull; Bengaluru
             </div>
         </section>
 
-        <!-- Projects -->
-        <section id="projects" class="space-y-8">
-            <div class="flex items-center gap-3">
-                <span class="font-mono text-emerald-500 text-sm">02.</span>
-                <h2 class="text-2xl font-bold tracking-tight text-zinc-100">Engineered Systems</h2>
-                <div class="h-px bg-zinc-800 flex-1 ml-4"></div>
-            </div>
+        <hr>
 
-            <div class="grid gap-6">
-
-                <!-- Project 1: host-inspector -->
-                <div class="border border-zinc-800 hover:border-zinc-700 transition-all rounded-xl p-6 bg-zinc-950/60 glow">
-                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-emerald-400 font-mono text-xs px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">v2.2 &bull; Active</span>
-                            <h3 class="text-xl font-bold text-zinc-100 font-mono">host-inspector</h3>
-                        </div>
-                        <a href="https://github.com/AnishAirsang/host-inspector" target="_blank" rel="noopener noreferrer" 
-                           class="text-xs font-mono text-zinc-400 hover:text-emerald-400 inline-flex items-center gap-1.5 transition-colors">
-                            <span>Repository</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        </a>
-                    </div>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-4">
-                        A modular user-space diagnostic utility written in modern C++17. Features a real-time CPU utilization speedometer computing work-tick deltas from <code class="text-zinc-300 font-mono bg-zinc-900 px-1 py-0.5 rounded">/proc/stat</code> across a 200ms sample window, 1m/5m/15m load averages from <code class="text-zinc-300 font-mono bg-zinc-900 px-1 py-0.5 rounded">/proc/loadavg</code>, and memory counters from <code class="text-zinc-300 font-mono bg-zinc-900 px-1 py-0.5 rounded">/proc/meminfo</code>. Built with strict CMake targets and modular collector separation.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs text-zinc-400">
-                        <span class="bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800">C++17</span>
-                        <span class="bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800">Linux procfs</span>
-                        <span class="bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800">CMake</span>
-                        <span class="bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800">RAII File I/O</span>
-                        <span class="bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800">Thread Sleep Delta</span>
-                    </div>
-                </div>
-
-                <!-- Project 2: NodeWatch -->
-                <div class="border border-zinc-800/80 rounded-xl p-6 bg-zinc-950/30">
-                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-zinc-400 font-mono text-xs px-2 py-0.5 rounded bg-zinc-800/50 border border-zinc-700/50">Roadmap Phase 1</span>
-                            <h3 class="text-xl font-bold text-zinc-300 font-mono">NodeWatch</h3>
-                        </div>
-                        <span class="text-xs font-mono text-zinc-500">In Development</span>
-                    </div>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-4">
-                        Linux systems metrics daemon written in Modern C++ exposing Prometheus-compatible text exposition metrics over an embedded HTTP server. Serves as the primary capstone for Semester 1 systems foundations, designed to be continuously scraped by Prometheus instances without memory leaks or drift.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs text-zinc-500">
-                        <span class="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800">C++17</span>
-                        <span class="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800">Prometheus Exposition</span>
-                        <span class="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800">systemd Daemon</span>
-                        <span class="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800">Telemetry Daemon</span>
-                    </div>
-                </div>
-
-                <!-- Project 3: dayfinder -->
-                <div class="border border-zinc-800/80 rounded-xl p-6 bg-zinc-950/30">
-                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-zinc-400 font-mono text-xs px-2 py-0.5 rounded bg-zinc-800/50 border border-zinc-700/50">Algorithm</span>
-                            <h3 class="text-xl font-bold text-zinc-300 font-mono">dayfinder</h3>
-                        </div>
-                        <a href="https://github.com/AnishAirsang/dayfinder" target="_blank" rel="noopener noreferrer" 
-                           class="text-xs font-mono text-zinc-400 hover:text-emerald-400 inline-flex items-center gap-1.5 transition-colors">
-                            <span>Repository</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        </a>
-                    </div>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-4">
-                        Calendar engine implementing deterministic weekday calculation algorithms for arbitrary historical and future Gregorian dates in C++.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs text-zinc-500">
-                        <span class="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800">C++</span>
-                        <span class="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800">Calendar Arithmetic</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Interactive Terminal Console -->
-        <section id="terminal" class="space-y-8">
-            <div class="flex items-center gap-3">
-                <span class="font-mono text-emerald-500 text-sm">03.</span>
-                <h2 class="text-2xl font-bold tracking-tight text-zinc-100">Live Interactive Shell</h2>
-                <div class="h-px bg-zinc-800 flex-1 ml-4"></div>
-            </div>
-
-            <div class="border border-zinc-800 rounded-xl overflow-hidden bg-black font-mono shadow-2xl">
-                <!-- Terminal Title Bar -->
-                <div class="bg-zinc-900/80 px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-                        <span class="ml-2 text-xs text-zinc-400 font-medium">terminal@anish-host:~</span>
-                    </div>
-                    <span class="text-[10px] text-zinc-500">v2.2-telemetry-ready</span>
-                </div>
-
-                <!-- Terminal Body -->
-                <div id="terminal-body" class="p-5 text-xs text-zinc-300 space-y-2 min-h-[260px] max-h-[380px] overflow-y-auto">
-                    <p class="text-zinc-500">Type <span class="text-emerald-400 font-semibold">'help'</span> to view available diagnostics commands.</p>
-                </div>
-
-                <!-- Input Line -->
-                <div class="px-5 py-3 border-t border-zinc-900 bg-zinc-950 flex items-center gap-2 text-xs">
-                    <span class="text-emerald-400 font-bold">anish@host:~$</span>
-                    <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false" 
-                           class="bg-transparent flex-1 text-zinc-100 outline-none border-none font-mono" 
-                           placeholder="try 'inspect' or 'help'...">
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact & Footer -->
-        <section id="contact" class="space-y-6 pt-6 border-t border-zinc-800/80">
-            <div class="flex items-center gap-3">
-                <span class="font-mono text-emerald-500 text-sm">04.</span>
-                <h2 class="text-2xl font-bold tracking-tight text-zinc-100">Communication Channels</h2>
-            </div>
-            
-            <p class="text-zinc-400 text-sm max-w-xl">
-                Interested in low-level systems programming, Linux internals, or platform engineering opportunities. Reach out via email or connect on LinkedIn.
-            </p>
-
-            <div class="flex flex-wrap gap-4 font-mono text-sm pt-2">
-                <a href="mailto:airsanganish@gmail.com" 
-                   class="px-4 py-2 rounded border border-zinc-800 bg-zinc-950 hover:border-emerald-500/50 hover:text-emerald-400 text-zinc-300 transition-colors">
-                    airsanganish@gmail.com
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
-                   class="px-4 py-2 rounded border border-zinc-800 bg-zinc-950 hover:border-zinc-600 text-zinc-400 hover:text-zinc-100 transition-colors">
-                    LinkedIn Profile
-                </a>
-                <a href="https://github.com/AnishAirsang" target="_blank" rel="noopener noreferrer" 
-                   class="px-4 py-2 rounded border border-zinc-800 bg-zinc-950 hover:border-zinc-600 text-zinc-400 hover:text-zinc-100 transition-colors">
-                    GitHub / AnishAirsang
-                </a>
-            </div>
-
-            <div class="pt-12 text-center text-xs text-zinc-600 font-mono">
-                &copy; 2026 Anish Airsang &bull; Rendered with zero tracking &bull; Hosted on GitHub Pages
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Interactive Terminal Script -->
-    <script>
-        const terminalBody = document.getElementById('terminal-body');
-        const terminalInput = document.getElementById('terminal-input');
-
-        const commands = {
-            help: () => `
-  Available commands:
-    <span class="text-emerald-400">inspect</span>    - Run simulated host-inspector v2.2 telemetry
-    <span class="text-emerald-400">about</span>      - Print engineering background
-    <span class="text-emerald-400">stack</span>      - List core systems technologies
-    <span class="text-emerald-400">projects</span>   - List active repositories
-    <span class="text-emerald-400">clear</span>      - Clear terminal screen
-`,
-            inspect: () => `
-<span class="text-zinc-500">Executing: ./build/host_inspector --sample 200ms...</span>
-=======================================
-     Linux Host Inspector (v2.2)       
-=======================================
-[+] CPU Metrics:
-    Usage     : <span class="text-emerald-400">18.4 %</span>
-    Load avg  : 0.85 / 1.12 / 0.94
-
-[+] RAM / Memory Usage:
-    Total     : 6.99786 GB
-    Available : 2.84152 GB
-    Used      : <span class="text-emerald-400">59.39 %</span>
-<span class="text-zinc-500">[✓] procfs sampling complete (0 errors, 0 leaks)</span>
-`,
-            about: () => `
-  Anish Airsang
-  Undergraduate Computer Science & Systems Engineering.
-  Focus: Linux Systems Programming (C++17), /proc Kernel Diagnostics, Cloud Platform Observability.
-`,
-            stack: () => `
-  - Languages: Modern C++ (C++17/20), Python, Bash
-  - Core OS: Linux Kernel procfs (/proc/stat, /proc/meminfo), POSIX
-  - Toolchain: CMake, GCC/G++, GDB, Valgrind, AddressSanitizer
-  - Targets: Prometheus Text Exposition Format, systemd Daemons
-`,
-            projects: () => `
-  1. host-inspector (v2.2)  -> github.com/AnishAirsang/host-inspector
-  2. NodeWatch (In Dev)     -> Linux Prometheus systems daemon
-  3. dayfinder              -> github.com/AnishAirsang/dayfinder
-`,
-            clear: () => {
-                terminalBody.innerHTML = '';
-                return null;
-            }
-        };
-
-        terminalInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const rawVal = this.value.trim();
-                const cmd = rawVal.toLowerCase();
-                
-                if (cmd.length > 0) {
-                    const line = document.createElement('div');
-                    line.innerHTML = `<span class="text-emerald-400 font-bold">anish@host:~$</span> <span>${escapeHtml(rawVal)}</span>`;
-                    terminalBody.appendChild(line);
-
-                    if (commands[cmd]) {
-                        const out = commands[cmd]();
-                        if (out !== null) {
-                            const result = document.createElement('div');
-                            result.innerHTML = out;
-                            terminalBody.appendChild(result);
-                        }
-                    } else {
-                        const err = document.createElement('div');
-                        err.innerHTML = `<span class="text-rose-400">Command not found: '${escapeHtml(rawVal)}'. Type 'help' for options.</span>`;
-                        terminalBody.appendChild(err);
-                    }
-                }
-                
-                this.value = '';
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-            }
-        });
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-    </script>
+        <footer>
+            <p>Feel free to reach out via <a href="mailto:airsanganish@gmail.com">email</a> if you'd like to talk about systems programming or potential projects.</p>
+        </footer>
+    </div>
 </body>
 </html>
